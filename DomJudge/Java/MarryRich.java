@@ -91,11 +91,17 @@ public class MarryRich {
             union_find(a); // initialization for union_find
 
             // Get the money of each person (money line)
-            int[] moneys = new int[a + 1];
-            StringTokenizer stMoney = new StringTokenizer(readNoBlank(buffRe));
-            for (int person = 1; person <= a - 1; person++) {
-                moneys[person] = Integer.parseInt(stMoney.nextToken());
-}
+            int[] moneys = new int[a+1];
+            int idx = 1;
+
+            while (idx <= a - 1) {
+                String line = readNoBlank(buffRe);
+                if (line == null) break;
+                StringTokenizer st = new StringTokenizer(line);
+                while (st.hasMoreTokens() && idx <= a - 1) {
+                    moneys[idx++] = Integer.parseInt(st.nextToken());
+                }
+            }
 
             // Read the total relations (family and marriage relations)
 
