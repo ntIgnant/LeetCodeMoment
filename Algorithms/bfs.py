@@ -47,7 +47,16 @@ def bfs(graph, source_node, goal_node):
         tmp_node_successors = get_sucessors(graph, tmp_node) # get the successors of the current node (expanded node)
 
         for nd in tmp_node_successors:
-            if nd not in exp_paths:
+            if nd not in exp_paths and nd not in parent:
+                parent[nd] = tmp_node
                 frontier.append(nd)
 
     return False
+
+print(bfs(graph, 'S', 'D'))
+
+print(bfs(graph, 'S', 'A'))
+
+print(bfs(graph, 'S', 'E'))
+
+print(bfs(graph, 'S', 'I'))
