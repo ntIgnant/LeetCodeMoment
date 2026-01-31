@@ -6,6 +6,13 @@ def get_successors(graph, node):
 
 node_successors = get_successors(my_graph, 'B')
 
-print(node_successors)
+# print(node_successors)
 
-print(path[-1]) # so last index
+# print(path[-1]) # so last index
+
+paths = ["ab", "ac"]   # existing alternative paths
+new_path = "ad"        # path we just generated
+
+# DFS-style insertion (front)
+paths = [new_path] + paths # This is what makes DFS have stack behaviour
+print(paths)
