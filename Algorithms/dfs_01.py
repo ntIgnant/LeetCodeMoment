@@ -19,7 +19,7 @@ def depth_first_search(graph, source_node, goal_node):
     paths = [source_node] # this will act as the frontier | all the discovered apths will be stored here as strings
 
     while paths != []:
-        current_path, paths = paths[0], paths[-1] # same queue behaviour here, the insertion is what makes it stack AT THE END
+        current_path, paths = paths[0], paths[1:] # same queue behaviour here, the insertion is what makes it stack AT THE END
 
         # Check if current path reached the destination by checking it's last node
         path_last_node = get_last_node(current_path)
@@ -37,4 +37,9 @@ def depth_first_search(graph, source_node, goal_node):
             # Now, append the new path at the BEGINNING of the path list | STACK BEHAVIOUR
             paths = [new_path] + paths # it needs to be in brackets because new_path alone is a string, and paths is a list
 
-    
+    return f'There is no path from {source_node} to {goal_node}'
+
+test_01 = depth_first_search(my_graph, 'A', 'H')
+test_02 = depth_first_search(my_graph, 'B', 'Z')
+print(test_01)
+print(test_02)

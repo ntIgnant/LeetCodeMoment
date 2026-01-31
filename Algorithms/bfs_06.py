@@ -37,7 +37,7 @@ def breadth_search(graph, source_node, goal_node):
     # Case where there was no patth found
     return f"No path found from {source_node} to {goal_node}"
 
-test_01 = breadth_search(my_graph, 'B', 'H')
+test_01 = breadth_search(my_graph, 'A', 'H')
 test_02 = breadth_search(my_graph, 'B', 'Z')
 print(test_01)
 print(test_02)
