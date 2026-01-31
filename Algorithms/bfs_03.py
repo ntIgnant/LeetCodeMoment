@@ -28,7 +28,7 @@ def bfs(graph, source_node, goal_node):
             path.reverse() # reverse the path | f->e->c->a --->> a->c->e->f
             return path
         
-        node_successors = get_successors(my_graph, tmp_node)
+        node_successors = get_successors(graph, tmp_node)
 
         for nd in node_successors:
             if nd not in exp_nodes and nd not in parent:
@@ -40,4 +40,9 @@ def bfs(graph, source_node, goal_node):
 
 
 test_path = bfs(my_graph, 'a', 'f')
+test_path2 = bfs(my_graph, 'd', 'f')
+test_path3 = bfs(my_graph, 'a', 's')
+
 print(test_path)
+print(test_path2)
+print(test_path3)
