@@ -6,7 +6,14 @@
 # e.g ('abde', cost)
 # NORMALLY in the implementation of UCS, the tuples are structured as path, cost in that specific order, but it will depend on the graph
 
-
+# weighted graph witth (cost, path) format
+ucs_graph = {
+    "a": [(1, "b"), (5, "c")],
+    "b": [(1, "d")],
+    "d": [(10, "f")],
+    "c": [(1, "f")],
+    "f": []
+}
 
 
 # Utility Functions
@@ -19,31 +26,27 @@ def get_successors(a_graph, a_node):
         return []
 
 def ucs(graph, source_node, goal_node):
-    frontier = [(0, source_node)] # So the fontier will store tuples, wich will contain (cost from root, path)
+    frontier = [(0, source_node)]  # (cost, path)
 
-    while frontier != []:
-        # sort the frontier values so that the cheaper cost appear first (having PRIORITY QUEUE BEHAVIOR)
-        frontier.sort(key=lambda x: x[0]) #? kida get that its mapping the tuple to srot the cost?
-        curr_cost, curr_path = frontier.pop(0) # so this pops the first tuple in the frontier, adn unpacks the values in cost and path (values of the tuple separated)
+    while frontier:
+        frontier.sort(key=lambda x: x[0])     # sort by cost
+        curr_cost, curr_path = frontier.pop(0)
 
-        # Get last node to verify if the goal node was reached 
-        path_last_node = get_last_node(curr_path)
-
-        # If the goal node was reached, return two values (path, cost from root to destination)
-        if path_last_node == goal_node:
+        last = curr_path[-1]
+        if last == goal_node:
             return curr_path, curr_cost
-        
-        # else, keep discovering paths with their costs
-        last_node_succ = get_successors(graph, path_last_node)
 
-        for pa, cos in last_node_succ:
+        for cos, pa in graph.get(last, []):   # (step_cost, successor)
             if pa in curr_path:
                 continue
-
-            # Crate the values for the new tuple (cost, path)
             new_path = curr_path + pa
             new_cost = curr_cost + cos
-
-            frontier.append((new_path, new_cost)) # append the new tuple (path, cost) to the frontier (for future visiting)
+            frontier.append((new_cost, new_path))
 
     return None
+
+
+print("Try 1 a->f:", ucs(ucs_graph, "a", "f"))  # expected ('acf', 6)
+print("Try 2 a->d:", ucs(ucs_graph, "a", "d"))  # expected ('abd', 2)
+print("Try 3 a->a:", ucs(ucs_graph, "a", "a"))  # expected ('a', 0)
+print("Try 4 b->f:", ucs(ucs_graph, "b", "f"))  # expected ('bdf', 11)
