@@ -15,4 +15,10 @@ new_path = "ad"        # path we just generated
 
 # DFS-style insertion (front)
 paths = [new_path] + paths # This is what makes DFS have stack behaviour
-print(paths)
+# print(paths)
+
+numArr = [1, 3, 2]
+
+num = 123
+
+print(num[0])
