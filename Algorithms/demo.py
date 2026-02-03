@@ -21,4 +21,22 @@ numArr = [1, 3, 2]
 
 num = 123
 
-print(num[0])
+# print(num[0])
+
+node1 = (1, 2, 3)
+node2 = (1, 2, 3)
+node3 = {1, 2, 3}
+node4 = {2, 3, 1}
+
+# print(node1 == node2)
+# print(node2 == node3)
+# print(node2 == node4)
+
+# transformation frrom tuple to list Ooo oOO
+pepe = (1, 2, 3, 4)
+listed_pepe = list(pepe)
+
+# print(listed_pepe)
+
+for x in range(len(listed_pepe) - 1):
+    print(f"{x} Hola")
