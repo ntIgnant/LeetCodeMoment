@@ -43,16 +43,26 @@ listed_pepe = list(pepe)
 
 listed_node = [1, 2, 3, 4]
 
-for x in range(len(listed_node)):
-    print(f"{x} Pepe")
+# for x in range(len(listed_node)):
+#     print(f"{x} Pepe")
 
 # print(sum(listed_node))
 
-for x in range(1, len(listed_node)+1):
-    print(x)
+# for x in range(1, len(listed_node)+1):
+#     print(x)
 
 muTuple = (1, 2, 3)
 
 muTuple = muTuple + (4,)
 
-print(muTuple)
+# print(muTuple)
+
+
+mylist1 = [1, 2]
+mylist2 = [[1, 2], [1]]
+
+# if mylist1 in mylist2:
+#     print(mylist1)
+
+for x in range(1, len(muTuple)):
+    print(x)
