@@ -38,5 +38,21 @@ listed_pepe = list(pepe)
 
 # print(listed_pepe)
 
-for x in range(len(listed_pepe) - 1):
-    print(f"{x} Hola")
+# for x in range(len(listed_pepe) - 1):
+#     print(f"{x} Hola")
+
+listed_node = [1, 2, 3, 4]
+
+for x in range(len(listed_node)):
+    print(f"{x} Pepe")
+
+# print(sum(listed_node))
+
+for x in range(1, len(listed_node)+1):
+    print(x)
+
+muTuple = (1, 2, 3)
+
+muTuple = muTuple + (4,)
+
+print(muTuple)
