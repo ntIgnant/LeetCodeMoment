@@ -92,4 +92,15 @@ def a_star(state, heuristic):
             print(f'Path found after {steps} steps')
             return((curr_state, curr_heur)) # retun the actuall value of the state and heurisitcs (as tuple)
 
-        # else, 
+        # else, add the current state to the visited set and keep discovering new states
+        if curr_state in visited:
+            continue
+        visited.add(curr_heur) # here, (vacPos, rooms) where rooms needs to be tuple for set hashing
+
+        # get the state successors (dicover new states)
+        curr_state_succ = get_successors(curr_state, curr_heur)
+        # so this should output this format:
+        # [move_left(state, heuristic), move_right(state, heuristic), vacuum(state, heuristic)]
+
+        
+
