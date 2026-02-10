@@ -102,5 +102,6 @@ def a_star(state, heuristic):
         # so this should output this format:
         # [move_left(state, heuristic), move_right(state, heuristic), vacuum(state, heuristic)]
 
-        
+        for actionCost, heurVal, state in successors:
+            new_path = curr ???
 
