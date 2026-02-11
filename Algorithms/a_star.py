@@ -57,7 +57,7 @@ def get_last_state(path):
 
 
 # uncomment and implement the following functions
-#
+
 # your first heuristic function
 def h1(state):
     vacPos, rooms = state
@@ -74,34 +74,34 @@ def h1(state):
 # the A* algorithm
 def a_star(state, heuristic):
     vacPos, rooms = state
-    # format the rooms as tuple instead of list for set hashing
-    state = (vacPos, tuple(rooms))
-    # use heap.push for the appending, to have priority queue behaviour
+    state = vacPos, tuple(rooms) # convert list to tuple
     frontier = []
-    
-    # this sorts the frontier as priority queue, as it is 'heapqueue' so no need to use lamnda... to map the sorting
-    hq.heappush(frontier, (state, heuristic))
+    hq.heappush(frontier, (0, h1(state), state)) # the second value is the cost (steps)
     visited = set()
+    steps = 0 # just to count cow many steps it took till the goal
 
     while frontier != []:
-        steps += 1 # conter that counts the number of steps till a solution is found
-        curr_state, curr_heur = hq.heappop(frontier) # pop the value as priority queue (index)
+        steps += 1
+        curr_cost, curr_heur, curr_state = hq.heappop(frontier) # unpack the first values in the heap frontier
 
-        # check if goal state was reached
-        if curr_heur == 0:
-            print(f'Path found after {steps} steps')
-            return((curr_state, curr_heur)) # retun the actuall value of the state and heurisitcs (as tuple)
+        # check if the goal state was reached
+        if curr_state[1] == (False, False, False, False):
+            print(f"Goal state reached after {steps} steps")
+            return ((curr_co, curr_heur, curr_state))
 
-        # else, add the current state to the visited set and keep discovering new states
+        # else, keep exploring new paths
         if curr_state in visited:
             continue
-        visited.add(curr_heur) # here, (vacPos, rooms) where rooms needs to be tuple for set hashing
+        visited.add(curr_state)
 
-        # get the state successors (dicover new states)
-        curr_state_succ = get_successors(curr_state, curr_heur)
-        # so this should output this format:
-        # [move_left(state, heuristic), move_right(state, heuristic), vacuum(state, heuristic)]
+        # get successors states to explore later
+        path_succs = get_successors(curr_state, curr_heur)
+        # this gives me a list of tuples, where each tuple is a successor
 
-        for actionCost, heurVal, state in successors:
-            new_path = curr ???
+        for tup in path_succs:
+            for cos, heur, st in tup:
+                if st in visited:
+                    continue
 
+                new_cost = curr_cost + cos
+                new_heur = h1(st)
